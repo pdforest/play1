@@ -3,6 +3,7 @@
 	<classpathentry excluding="japidviews/**|rythm/**|views/**" kind="src" path="app"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="docviewer"/>
+	<classpathentry kind="src" path="crud"/>
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:\ICBC\play-1.4.6\framework\play-1.4.6.jar" sourcepath="C:/icbc/play-1.4.6/framework/src" />

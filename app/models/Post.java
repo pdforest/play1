@@ -1,19 +1,34 @@
 package models;
  
-import java.util.*;
-import javax.persistence.*;
- 
-import play.db.jpa.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import play.data.validation.MaxSize;
+import play.data.validation.Required;
+import play.db.jpa.Model;
  
 @Entity
 public class Post extends Model {
  
+	@Required
     public String title;
+	
+	@Required
     public Date postedAt;
     
     @Lob
+    @Required
+    @MaxSize(10000)
     public String content;
     
+    @Required
     @ManyToOne
     public User author;
     
@@ -36,4 +51,12 @@ public class Post extends Model {
         return this;
     }
  
+    public Post previous() {
+        return Post.find("postedAt < ? order by postedAt desc", postedAt).first();
+    }
+     
+    public Post next() {
+        return Post.find("postedAt > ? order by postedAt asc", postedAt).first();
+    }
+    
 }
