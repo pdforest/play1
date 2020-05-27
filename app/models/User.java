@@ -30,5 +30,8 @@ public class User extends Model {
         return find("byEmailAndPassword", email, password).first();
     }
 
+    public String toString() {
+        return email;
+    }
  
 }
