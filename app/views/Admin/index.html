@@ -1,4 +1,16 @@
 #{extends 'admin.html' /}
 
-Welcome ${user}!
-todo esto va en el doLayout
+<!-- lo de abajo se inserta en el doLayout -->
+
+<h3>Welcome ${user}, <span>you have written ${posts.size() ?: 'no'} 
+${posts.pluralize('post', 'posts')} so far</span></h3>
+ 
+#{list items:posts, as:'post'}
+    <p class="post ${post_parity}">
+        <a href="@{Admin.form(post.id)}">${post.title}</a>
+    </p>
+#{/list}
+ 
+<p id="newPost" >
+    <a href="@{form()}"><span>+</span> write a new post</a>
+</p>
